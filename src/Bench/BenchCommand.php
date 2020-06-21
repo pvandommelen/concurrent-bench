@@ -2,6 +2,7 @@
 
 namespace Pvandommelen\ConcurrentBench\Bench;
 
+use Pvandommelen\ConcurrentBench\Report\AggregateAggregator;
 use Pvandommelen\ConcurrentBench\Report\InMemoryAggregator;
 use Pvandommelen\ConcurrentBench\Worker\WorkerFactory;
 use Symfony\Component\Console\Command\Command;
@@ -41,7 +42,10 @@ class BenchCommand extends Command {
 
 		$progress = new ProgressBar($output);
 		$memory_aggregator = new InMemoryAggregator();
-		$aggregator = new ProgressBarAggregator($memory_aggregator, $progress);
+		$aggregator = new AggregateAggregator([
+			$memory_aggregator,
+			new ProgressBarAggregator($progress),
+		]);
 
 		$progress->start($total_iterations);
 		$process->execute($aggregator);
