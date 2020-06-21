@@ -23,7 +23,7 @@ class InMemoryAggregator implements ResultAggregator {
 		}
 	}
 
-	public function setTotalTime(float $total_time): void {
+	public function finalize(float $total_time): void {
 		$this->total_time = $total_time;
 	}
 

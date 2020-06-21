@@ -20,8 +20,8 @@ class ProgressBarAggregator implements ResultAggregator {
 		$this->progress_bar->advance(1);
 	}
 
-	public function setTotalTime(float $total_time): void {
-		$this->internal->setTotalTime($total_time);
+	public function finalize(float $total_time): void {
+		$this->internal->finalize($total_time);
 		$this->progress_bar->finish();
 	}
 }

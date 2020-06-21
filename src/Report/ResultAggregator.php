@@ -7,5 +7,5 @@ use Pvandommelen\ConcurrentBench\BenchEntry;
 interface ResultAggregator {
 	public function pushEntry(BenchEntry $entry): void;
 
-	public function setTotalTime(float $total_time): void;
+	public function finalize(float $total_time): void;
 }

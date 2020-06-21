@@ -60,6 +60,6 @@ class BenchProcess {
 			throw new BenchMarkingException("Number of executed iterations `$messages_returned` did not match expected number of iterations `$this->total_iterations`");
 		}
 
-		$aggregator->setTotalTime($end - $start);
+		$aggregator->finalize($end - $start);
 	}
 }
