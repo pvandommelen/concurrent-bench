@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "bench"
+version = "0.1.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.6"
+matplotlib = "^3.2.2"
+numpy = "^1.19.0"

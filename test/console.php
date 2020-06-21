@@ -56,6 +56,15 @@ $task_repository = new TaskRepository([
 			usleep($sleep_ms * 1000);
 		}
 	},
+    "logsleep" => new class implements Task {
+	    public function initialize(): void {}
+
+	    private int $i = 0;
+	    public function run(): void {
+	        $this->i += 1;
+	        usleep(10000 * log($this->i));
+	    }
+    }
 ]);
 $app = new Application();
 $app->add(new \Pvandommelen\ConcurrentBench\Worker\WorkerCommand($task_repository));
